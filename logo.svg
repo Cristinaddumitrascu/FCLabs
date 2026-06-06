@@ -1,0 +1,10 @@
+<svg width="264" height="224" viewBox="0 0 132 112" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Full Circle Labs">
+  <g fill="#1A1A18" font-family="'DM Sans', Arial, sans-serif" font-weight="700" letter-spacing="-1">
+    <text x="0" y="28" font-size="30">FULL</text>
+    <text x="0" y="64" font-size="30">CIRCLE</text>
+    <text x="0" y="100" font-size="30">LABS</text>
+  </g>
+  <circle cx="104" cy="88" r="16" fill="#1A1A18"/>
+  <circle cx="104" cy="88" r="6" fill="#FFFFFF"/>
+  <circle cx="104" cy="88" r="2.4" fill="#1A1A18"/>
+</svg>
