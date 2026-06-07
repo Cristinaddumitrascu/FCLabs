@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Full Circle Labs · Product & digital transformation consultancy</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Ccircle cx='128' cy='128' r='120' fill='%231A1A18'/%3E%3Ccircle cx='128' cy='128' r='46' fill='%23FFFFFF'/%3E%3Ccircle cx='128' cy='128' r='18' fill='%231A1A18'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blue-50: #E6F1FB;
+    --blue-100: #B5D4F4;
+    --blue-200: #85B7EB;
+    --blue-400: #378ADD;
+    --blue-600: #185FA5;
+    --blue-800: #0C447C;
+    --blue-900: #042C53;
+    --gray-50: #F7F7F6;
+    --gray-100: #EDEDEB;
+    --gray-200: #DDDDD9;
+    --gray-400: #9A9A94;
+    --gray-600: #5F5E5A;
+    --gray-800: #2C2C2A;
+    --white: #FFFFFF;
+    --text-primary: #1A1A18;
+    --text-secondary: #5F5E5A;
+    --text-muted: #9A9A94;
+    --accent: #378ADD;
+    --accent-dark: #185FA5;
+    --border: #E8E8E5;
+    --font-sans: 'DM Sans', sans-serif;
+    --font-serif: 'Instrument Serif', serif;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 20px;
+    --nav-h: 72px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--white);
+    color: var(--text-primary);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+  }
+
+  .nav-logo {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .logo-mark {
+    height: 46px; width: auto;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .footer-brand .logo-mark { height: 60px; }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+    letter-spacing: 0.01em;
+  }
+
+  .nav-links a:hover { color: var(--text-primary); }
+
+  .nav-cta {
+    background: var(--text-primary);
+    color: var(--white) !important;
+    padding: 9px 20px;
+    border-radius: 100px;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+
+  .nav-cta:hover {
+    background: var(--accent-dark) !important;
+    color: var(--white) !important;
+    transform: translateY(-1px);
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 5%; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-h) + 80px);
+    padding-bottom: 80px;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--gray-100) 1px, transparent 1px),
+      linear-gradient(90deg, var(--gray-100) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .hero-bg-circle {
+    position: absolute;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #E6F1FB 0%, transparent 70%);
+    top: -200px; right: -200px;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    position: relative;
+    max-width: 860px;
+    animation: fadeUp 0.9s ease both;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--blue-50);
+    color: var(--blue-600);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-tag-dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(44px, 6vw, 76px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -1px;
+    color: var(--text-primary);
+    margin-bottom: 28px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    max-width: 580px;
+    margin-bottom: 48px;
+    line-height: 1.65;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .btn-primary {
+    background: var(--text-primary);
+    color: var(--white);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-dark);
+    transform: translateY(-2px);
+  }
+
+  .btn-secondary {
+    color: var(--text-primary);
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px;
+    font-weight: 400;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, transform 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--gray-400);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .hero-stat-n {
+    font-family: var(--font-serif);
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1;
+  }
+
+  .hero-stat-n em { color: var(--accent); font-style: normal; }
+
+  .hero-stat-l {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  /* ABOUT */
+  #about {
+    background: var(--gray-50);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: none;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+  }
+
+  h2 em { font-style: italic; color: var(--accent); }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .about-text p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .badge {
+    background: var(--white);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 400;
+    padding: 7px 14px;
+    border-radius: 100px;
+  }
+
+  .about-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .about-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px 28px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .about-card:hover {
+    border-color: var(--blue-200);
+    transform: translateX(4px);
+  }
+
+  .about-card-n {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .about-card-l {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+  }
+
+  /* SERVICES */
+  #services { background: var(--white); }
+
+  .services-header {
+    max-width: 600px;
+    margin-bottom: 60px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .service-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 36px 32px;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover {
+    border-color: var(--blue-200);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(55,138,221,0.1);
+  }
+
+  .service-card:hover::before { transform: scaleX(1); }
+
+  .service-icon {
+    width: 44px; height: 44px;
+    background: var(--blue-50);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .service-icon svg {
+    width: 22px; height: 22px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-card h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    letter-spacing: -0.2px;
+  }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .service-tag {
+    font-size: 12px;
+    color: var(--blue-600);
+    background: var(--blue-50);
+    padding: 4px 10px;
+    border-radius: 100px;
+  }
+
+  /* INDUSTRIES */
+  #industries {
+    background: var(--text-primary);
+    color: var(--white);
+  }
+
+  #industries .section-label { color: var(--blue-200); }
+
+  #industries h2 { color: var(--white); }
+
+  #industries h2 em { color: var(--blue-200); }
+
+  .industries-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    max-width: 520px;
+    margin-bottom: 60px;
+    line-height: 1.7;
+  }
+
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+  }
+
+  .industry-tile {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .industry-tile:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: rgba(55,138,221,0.4);
+  }
+
+  .industry-tile svg {
+    width: 24px; height: 24px;
+    stroke: var(--blue-200);
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin-bottom: 16px;
+    display: block;
+  }
+
+  .industry-tile h4 {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+
+  .industry-tile p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+  }
+
+  /* HOW WE WORK */
+  #process { background: var(--gray-50); border-top: 1px solid var(--border); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
+    margin-top: 56px;
+    position: relative;
+  }
+
+  .process-step {
+    padding: 32px 28px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+
+  .process-step:last-child { border-right: none; }
+
+  .step-num {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    color: var(--gray-200);
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .process-step h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+  }
+
+  .process-step p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.65;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  .contact-left h2 { margin-bottom: 16px; }
+
+  .contact-left p {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .contact-detail {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 15px;
+    color: var(--text-secondary);
+  }
+
+  .contact-detail svg {
+    width: 20px; height: 20px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+  }
+
+  .contact-detail a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .contact-detail a:hover { text-decoration: underline; }
+
+  .contact-form-box {
+    background: var(--gray-50);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+  }
+
+  .contact-form-box h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+  }
+
+  .contact-form-box .form-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 11px 14px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--accent);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 96px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .btn-book {
+    width: 100%;
+    background: var(--text-primary);
+    color: var(--white);
+    border: none;
+    border-radius: 100px;
+    padding: 14px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .btn-book:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+  }
+
+  .or-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 16px 0;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .or-divider::before, .or-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .btn-calendly {
+    width: 100%;
+    background: var(--white);
+    color: var(--accent-dark);
+    border: 1px solid var(--blue-200);
+    border-radius: 100px;
+    padding: 13px;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-decoration: none;
+  }
+
+  .btn-calendly:hover {
+    background: var(--blue-50);
+    transform: translateY(-1px);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--gray-50);
+    border-top: 1px solid var(--border);
+    padding: 48px 5%;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    text-decoration: none;
+  }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: var(--text-muted);
+    max-width: 260px;
+    line-height: 1.6;
+  }
+
+  .footer-links-col h5 {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+
+  .footer-links-col ul { list-style: none; }
+
+  .footer-links-col ul li { margin-bottom: 10px; }
+
+  .footer-links-col ul li a {
+    font-size: 14px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links-col ul li a:hover { color: var(--accent); }
+
+  .footer-bottom {
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .footer-legal {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .footer-legal a {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-legal a:hover { color: var(--text-secondary); }
+
+  .footer-badges {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  a.footer-badge {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: border-color 0.2s;
+  }
+
+  a.footer-badge:hover { border-color: var(--accent); color: var(--accent); }
+
+  .footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    font-weight: 400;
+  }
+
+  .footer-badge svg {
+    width: 14px; height: 14px;
+    stroke: var(--text-muted);
+    fill: none;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* FORM SUCCESS */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 32px 0;
+  }
+
+  .form-success svg {
+    width: 48px; height: 48px;
+    stroke: var(--accent);
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin-bottom: 16px;
+  }
+
+  .form-success h4 { font-size: 18px; font-weight: 500; margin-bottom: 8px; }
+
+  .form-success p { font-size: 14px; color: var(--text-muted); }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 4%; }
+    .nav-links { display: none; }
+    section { padding: 72px 4%; }
+    .two-col, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 32px; }
+    .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .process-step:last-child { border-bottom: none; }
+    .footer-inner { flex-direction: column; }
+    .footer-bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo" aria-label="Full Circle Labs">
+    <svg class="logo-mark" viewBox="0 0 132 112" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Full Circle Labs">
+      <g fill="#1A1A18" font-family="'DM Sans', sans-serif" font-weight="700" letter-spacing="-1">
+        <text x="0" y="28" font-size="30">FULL</text>
+        <text x="0" y="64" font-size="30">CIRCLE</text>
+        <text x="0" y="100" font-size="30">LABS</text>
+      </g>
+      <circle cx="104" cy="88" r="16" fill="#1A1A18"/>
+      <circle cx="104" cy="88" r="6" fill="#FFFFFF"/>
+      <circle cx="104" cy="88" r="2.4" fill="#1A1A18"/>
+    </svg>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#process">Approach</a></li>
+    <li><a href="#contact" class="nav-cta">Book a call</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-bg-circle"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      Product & digital transformation consultancy
+    </div>
+    <h1>We don't do <em>half circles.</em></h1>
+    <p class="hero-sub">Full Circle Labs brings 15+ years of senior experience to companies serious about transformation. We don't advise and leave. We lead, embed, build, and execute, globally.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">
+        Book a discovery call
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+      <a href="#services" class="btn-secondary">
+        Explore services
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-n">15<em>+</em></div>
+        <div class="hero-stat-l">Years inside the rooms where decisions get made</div>
+      </div>
+      <div>
+        <div class="hero-stat-n">5<em>+</em></div>
+        <div class="hero-stat-l">Industry verticals covered</div>
+      </div>
+      <div>
+        <div class="hero-stat-n">End<em>-to-</em>end</div>
+        <div class="hero-stat-l">From strategy to delivery</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="two-col">
+    <div class="about-text fade-in">
+      <div class="section-label">About Full Circle Labs</div>
+      <h2>Built by practitioners,<br>not <em>theorists.</em></h2>
+      <p>Full Circle Labs was built on a simple premise: the best transformations happen when strategy and execution live in the same room.</p>
+      <p>We bring together senior expertise across product and project management, software development, operations, product marketing, agentic AI, and digital transformation and we embed directly into your team to deliver.</p>
+      <p>We don't just advise. We build alongside you. Whether you need strategic clarity, tactical execution, or end-to-end ownership, we bring the right expertise to the right problem, every time.</p>
+      <div class="about-badges">
+        <span class="badge">Product management</span>
+        <span class="badge">Project management</span>
+        <span class="badge">Development</span>
+        <span class="badge">Operations & process</span>
+        <span class="badge">Product marketing</span>
+        <span class="badge">Agentic orchestration</span>
+        <span class="badge">Digital transformation</span>
+        <span class="badge">Cybersecurity</span>
+      </div>
+    </div>
+    <div class="about-cards fade-in">
+      <div class="about-card">
+        <div class="about-card-n">15+</div>
+        <div class="about-card-l">Years of senior experience across high-stakes industries</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-n">5+</div>
+        <div class="about-card-l">Sectors: gaming, software, cybersecurity, SaaS & more</div>
+      </div>
+      <div class="about-card">
+        <div class="about-card-n">360°</div>
+        <div class="about-card-l">Coverage across product, operations, automation, AI and digital transformation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header fade-in">
+    <div class="section-label">What we do</div>
+    <h2>Consulting across product, operations<br>and <em>digital transformation.</em></h2>
+    <p style="font-size:17px;color:var(--text-secondary);line-height:1.7;margin-top:16px;">We go far beyond the product lifecycle, covering operations, process design, automation, embedding AI into the way your company works, and full digital transformation for organizations ready to go digital.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      </div>
+      <h3>Product consulting</h3>
+      <p>Product strategy, roadmap definition, prioritization frameworks, and hands-on product leadership. We help you build the right thing, at the right time, for the right users.</p>
+      <div class="service-tags">
+        <span class="service-tag">Roadmapping</span>
+        <span class="service-tag">OKRs</span>
+        <span class="service-tag">User research</span>
+        <span class="service-tag">PRD writing</span>
+      </div>
+    </div>
+
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+      </div>
+      <h3>Development advisory</h3>
+      <p>Technical scoping, architecture reviews, team structuring, and delivery oversight. We bridge the gap between product vision and engineering reality, without the usual friction.</p>
+      <div class="service-tags">
+        <span class="service-tag">Tech stack review</span>
+        <span class="service-tag">Architecture</span>
+        <span class="service-tag">Team scaling</span>
+        <span class="service-tag">Delivery</span>
+      </div>
+    </div>
+
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+      </div>
+      <h3>Operations & processes</h3>
+      <p>Operational audits, process design, tooling selection, and workflow automation. We help organizations run leaner, faster, and more predictably, from startup chaos to structured scale.</p>
+      <div class="service-tags">
+        <span class="service-tag">Process design</span>
+        <span class="service-tag">Automation</span>
+        <span class="service-tag">Tooling</span>
+        <span class="service-tag">KPIs</span>
+      </div>
+    </div>
+
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
+      </div>
+      <h3>Project management</h3>
+      <p>End-to-end project and program management. We take full ownership, coordinate every moving part, align stakeholders, and drive delivery on time, on scope, and on budget.</p>
+      <div class="service-tags">
+        <span class="service-tag">Planning</span>
+        <span class="service-tag">Stakeholder alignment</span>
+        <span class="service-tag">Delivery</span>
+        <span class="service-tag">Risk management</span>
+      </div>
+    </div>
+
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      </div>
+      <h3>Product marketing</h3>
+      <p>Positioning, messaging, go-to-market strategy, and PMM function setup. We ensure your product is understood, valued, and adopted by the people who matter most.</p>
+      <div class="service-tags">
+        <span class="service-tag">Positioning</span>
+        <span class="service-tag">GTM strategy</span>
+        <span class="service-tag">Messaging</span>
+        <span class="service-tag">Launch</span>
+      </div>
+    </div>
+
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Agentic orchestration</h3>
+      <p>Design, build, and implement AI-powered agent workflows that automate complex, multi-step business processes. From prototype to production-grade orchestration systems.</p>
+      <div class="service-tags">
+        <span class="service-tag">AI agents</span>
+        <span class="service-tag">LLM integration</span>
+        <span class="service-tag">Workflow automation</span>
+      </div>
+    </div>
+
+    <div class="service-card fade-in">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <h3>Digital transformation</h3>
+      <p>End-to-end transformation programs that modernize legacy systems, adopt new technologies, and reshape how your organization works, with minimal disruption and maximum impact.</p>
+      <div class="service-tags">
+        <span class="service-tag">Cloud migration</span>
+        <span class="service-tag">Legacy modernization</span>
+        <span class="service-tag">Change mgmt</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section id="industries">
+  <div class="section-label">Industries</div>
+  <h2>Experience across the <em>sectors</em><br>that move fast.</h2>
+  <p class="industries-sub">We've worked in and around industries where speed, precision, and deep domain knowledge aren't optional. They're the baseline.</p>
+  <div class="industries-grid fade-in">
+    <div class="industry-tile">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+      <h4>Gaming</h4>
+      <p>Live-ops, game product, studio operations & player experience</p>
+    </div>
+    <div class="industry-tile">
+      <svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>
+      <h4>SaaS, PaaS & IaaS</h4>
+      <p>Cloud platforms, B2B software, developer tools & infrastructure at scale</p>
+    </div>
+    <div class="industry-tile">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      <h4>Cybersecurity</h4>
+      <p>Security products, compliance tooling & risk management platforms</p>
+    </div>
+    <div class="industry-tile">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49"/><path d="M7.76 16.24a6 6 0 0 1 0-8.49"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>
+      <h4>Telecommunications</h4>
+      <p>Network operators, large-scale transformation & digital service platforms</p>
+    </div>
+    <div class="industry-tile">
+      <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M4 10l8-6 8 6"/><path d="M6 10v8"/><path d="M10 10v8"/><path d="M14 10v8"/><path d="M18 10v8"/></svg>
+      <h4>Public sector & GovTech</h4>
+      <p>EU institutions, public bodies & regulatory and digital transformation</p>
+    </div>
+    <div class="industry-tile">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      <h4>Digital media</h4>
+      <p>Content platforms, media tech & digital publishing ecosystems</p>
+    </div>
+    <div class="industry-tile">
+      <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <h4>AI & automation</h4>
+      <p>ML-powered products, agentic systems & intelligent workflow design</p>
+    </div>
+    <div class="industry-tile">
+      <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <h4>E-commerce & retail tech</h4>
+      <p>Marketplaces, retail platforms, checkout flows & operations automation</p>
+    </div>
+    <div class="industry-tile">
+      <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      <h4>Fintech & growth</h4>
+      <p>Payment platforms, analytics products & growth-stage scale-ups</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE WORK -->
+<section id="process">
+  <div class="fade-in">
+    <div class="section-label">Our approach</div>
+    <h2>How we <em>work</em> with you.</h2>
+  </div>
+  <div class="process-steps">
+    <div class="process-step fade-in">
+      <div class="step-num">01</div>
+      <h3>Discovery</h3>
+      <p>We start with a deep-dive into your context: business goals, team dynamics, technical landscape, and the gaps that matter most. No assumptions.</p>
+    </div>
+    <div class="process-step fade-in">
+      <div class="step-num">02</div>
+      <h3>Diagnosis</h3>
+      <p>We identify root causes, not surface symptoms. You get a clear picture of what's working, what isn't, and where the highest-leverage opportunities are.</p>
+    </div>
+    <div class="process-step fade-in">
+      <div class="step-num">03</div>
+      <h3>Design</h3>
+      <p>We co-create a pragmatic plan of strategies, processes, tools, and structures, tailored to your team's capacity and your company's stage.</p>
+    </div>
+    <div class="process-step fade-in">
+      <div class="step-num">04</div>
+      <h3>Delivery</h3>
+      <p>We embed with your team to drive execution. We don't just hand off a deck. We stay until the change is real, measurable, and sustainable.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left fade-in">
+      <div class="section-label">Get in touch</div>
+      <h2>Ready to talk? <em>Let's start.</em></h2>
+      <p>Whether you have a specific challenge or just want to explore what's possible, we're happy to have a conversation. No sales pitch, just an honest, expert discussion.</p>
+      <div class="contact-details">
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>Email us at <a href="mailto:hello@fclabs.io">hello@fclabs.io</a></span>
+        </div>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>Response within 1 business day</span>
+        </div>
+        <div class="contact-detail">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Brussels · globally</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form-box fade-in">
+      <h3>Book a discovery call</h3>
+      <p class="form-sub">Tell us a bit about your situation and we'll find a time that works.</p>
+
+      <div id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" placeholder="Ana">
+          </div>
+          <div class="form-group">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" placeholder="Ionescu">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Work email</label>
+          <input type="email" id="email" placeholder="ana@compania.ro">
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" placeholder="Compania SRL">
+        </div>
+        <div class="form-group">
+          <label for="topic">What do you need help with?</label>
+          <select id="topic">
+            <option value="" disabled selected>Selectează un serviciu</option>
+            <option>Product strategy & consulting</option>
+            <option>Project management</option>
+            <option>Development advisory</option>
+            <option>Operations & process design</option>
+            <option>Product marketing</option>
+            <option>Agentic orchestration / AI</option>
+            <option>Digital transformation</option>
+            <option>Multiple / not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Brief context (optional)</label>
+          <textarea id="message" placeholder="Tell us a bit about your challenge or what you're trying to achieve..."></textarea>
+        </div>
+        <button class="btn-book" onclick="handleSubmit()">
+          Send request
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+        <div class="or-divider">or</div>
+        <a class="btn-calendly" href="https://calendly.com" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Schedule directly via Calendly
+        </a>
+      </div>
+
+      <div class="form-success" id="form-success">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        <h4>Message sent!</h4>
+        <p>We'll get back to you within one business day. Talk soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="#hero" class="footer-brand" aria-label="Full Circle Labs">
+        <svg class="logo-mark" viewBox="0 0 132 112" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Full Circle Labs">
+          <g fill="#1A1A18" font-family="'DM Sans', sans-serif" font-weight="700" letter-spacing="-1">
+            <text x="0" y="28" font-size="30">FULL</text>
+            <text x="0" y="64" font-size="30">CIRCLE</text>
+            <text x="0" y="100" font-size="30">LABS</text>
+          </g>
+          <circle cx="104" cy="88" r="16" fill="#1A1A18"/>
+          <circle cx="104" cy="88" r="6" fill="#FFFFFF"/>
+          <circle cx="104" cy="88" r="2.4" fill="#1A1A18"/>
+        </svg>
+      </a>
+      <p class="footer-tagline">Product & digital transformation consultancy. Built by practitioners, for builders.</p>
+      <div class="footer-badges">
+        <a href="https://anpc.ro" target="_blank" rel="noopener" class="footer-badge">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Protecția consumatorului
+        </a>
+        <a href="https://anpc.ro/ce-dorim/sal-anpc/" target="_blank" rel="noopener" class="footer-badge">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          ANPC
+        </a>
+      </div>
+    </div>
+    <div class="footer-links-col">
+      <h5>Navigation</h5>
+      <ul>
+        <li><a href="#about">About us</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#industries">Industries</a></li>
+        <li><a href="#process">Our approach</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <h5>Services</h5>
+      <ul>
+        <li><a href="#services">Product consulting</a></li>
+        <li><a href="#services">Project management</a></li>
+        <li><a href="#services">Development advisory</a></li>
+        <li><a href="#services">Operations</a></li>
+        <li><a href="#services">Product marketing</a></li>
+        <li><a href="#services">AI & agentic</a></li>
+        <li><a href="#services">Digital transformation</a></li>
+      </ul>
+    </div>
+    <div class="footer-links-col">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:hello@fclabs.io">hello@fclabs.io</a></li>
+        <li><a href="#contact">Book a call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Full Circle Labs. Toate drepturile rezervate.</p>
+    <div class="footer-legal">
+      <a href="privacy.html">Politica de confidențialitate</a>
+      <a href="terms.html">Termeni și condiții</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  function handleSubmit() {
+    const email = document.getElementById('email').value;
+    const fname = document.getElementById('fname').value;
+    if (!fname || !email) {
+      document.getElementById('email').style.borderColor = '#E24B4A';
+      document.getElementById('fname').style.borderColor = '#E24B4A';
+      setTimeout(() => {
+        document.getElementById('email').style.borderColor = '';
+        document.getElementById('fname').style.borderColor = '';
+      }, 2000);
+      return;
+    }
+    document.getElementById('contact-form').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+</script>
+</body>
+</html>
