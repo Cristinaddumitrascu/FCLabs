@@ -41,7 +41,7 @@
     --nav-h: 72px;
   }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
 
   body {
     font-family: var(--font-sans);
@@ -50,6 +50,16 @@
     font-size: 16px;
     line-height: 1.7;
     overflow-x: hidden;
+  }
+
+  section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+    scroll-margin-top: var(--nav-h);
+  }
+
+  @media (max-width: 768px) {
+    html { scroll-snap-type: none; }
   }
 
   /* NAV */
@@ -1368,7 +1378,7 @@
         <div class="form-group">
           <label for="topic">What do you need help with?</label>
           <select id="topic">
-            <option value="" disabled selected>Selectează un serviciu</option>
+            <option value="" disabled selected>Select a service</option>
             <option>Scaling AI & automation</option>
             <option>Digitizing our company</option>
             <option>Setting up an AI-native company</option>
