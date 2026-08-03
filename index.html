@@ -58,6 +58,22 @@
     scroll-margin-top: var(--nav-h);
   }
 
+  .service-card, .industry-tile {
+    scroll-margin-top: calc(var(--nav-h) + 24px);
+  }
+
+  a.badge {
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  a.badge:hover {
+    background: var(--accent, #378ADD);
+    color: #fff;
+    border-color: var(--accent, #378ADD);
+  }
+
   @media (max-width: 768px) {
     html { scroll-snap-type: none; }
   }
@@ -1011,16 +1027,16 @@
       <p>We've spent 15+ years inside product, engineering, operations and marketing organizations, the rooms where these decisions actually get made. We've seen what works, what stalls, and what quietly burns budget. That's what we bring to every engagement.</p>
       <p>We work with companies at every stage: teams already deep into AI and automation who want to move faster and smarter, teams that aren't digitized yet and want to start right, founders who haven't even incorporated and want to build AI-native from day one, and established teams that simply want an honest audit of what they already have.</p>
       <div class="about-badges">
-        <span class="badge">AI & automation</span>
-        <span class="badge">Digital transformation</span>
-        <span class="badge">Process audits</span>
-        <span class="badge">Company setup</span>
-        <span class="badge">Product management</span>
-        <span class="badge">Project management</span>
-        <span class="badge">Development</span>
-        <span class="badge">Operations & process</span>
-        <span class="badge">Product marketing</span>
-        <span class="badge">Cybersecurity</span>
+        <a href="#seg-scale" class="badge">AI & automation</a>
+        <a href="#svc-digital" class="badge">Digital transformation</a>
+        <a href="#seg-audit" class="badge">Process audits</a>
+        <a href="#seg-setup" class="badge">Company setup</a>
+        <a href="#svc-product" class="badge">Product management</a>
+        <a href="#svc-pm" class="badge">Project management</a>
+        <a href="#svc-dev" class="badge">Development</a>
+        <a href="#svc-ops" class="badge">Operations & process</a>
+        <a href="#svc-marketing" class="badge">Product marketing</a>
+        <a href="#ind-cyber" class="badge">Cybersecurity</a>
       </div>
     </div>
     <div class="about-cards fade-in">
@@ -1049,7 +1065,7 @@
   </div>
   <div class="services-grid">
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="seg-scale">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
       </div>
@@ -1062,7 +1078,7 @@
       </div>
     </div>
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="seg-digitize">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </div>
@@ -1075,7 +1091,7 @@
       </div>
     </div>
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="seg-setup">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
       </div>
@@ -1088,7 +1104,7 @@
       </div>
     </div>
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="seg-audit">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
       </div>
@@ -1113,7 +1129,7 @@
   </div>
   <div class="services-grid">
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="svc-product">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
       </div>
@@ -1127,7 +1143,7 @@
       </div>
     </div>
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="svc-dev">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
       </div>
@@ -1141,7 +1157,7 @@
       </div>
     </div>
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="svc-ops">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
       </div>
@@ -1155,7 +1171,7 @@
       </div>
     </div>
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="svc-pm">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg>
       </div>
@@ -1169,7 +1185,7 @@
       </div>
     </div>
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="svc-marketing">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
       </div>
@@ -1183,7 +1199,7 @@
       </div>
     </div>
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="svc-agentic">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       </div>
@@ -1196,7 +1212,7 @@
       </div>
     </div>
 
-    <div class="service-card fade-in">
+    <div class="service-card fade-in" id="svc-digital">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
       </div>
@@ -1228,7 +1244,7 @@
       <h4>SaaS, PaaS & IaaS</h4>
       <p>Cloud platforms, B2B software, developer tools & infrastructure at scale</p>
     </div>
-    <div class="industry-tile">
+    <div class="industry-tile" id="ind-cyber">
       <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       <h4>Cybersecurity</h4>
       <p>Security products, compliance tooling & risk management platforms</p>
@@ -1360,20 +1376,20 @@
         <div class="form-row">
           <div class="form-group">
             <label for="fname">First name</label>
-            <input type="text" id="fname" placeholder="Ana">
+            <input type="text" id="fname" placeholder="Jane">
           </div>
           <div class="form-group">
             <label for="lname">Last name</label>
-            <input type="text" id="lname" placeholder="Ionescu">
+            <input type="text" id="lname" placeholder="Doe">
           </div>
         </div>
         <div class="form-group">
           <label for="email">Work email</label>
-          <input type="email" id="email" placeholder="ana@compania.ro">
+          <input type="email" id="email" placeholder="jane@company.com">
         </div>
         <div class="form-group">
           <label for="company">Company</label>
-          <input type="text" id="company" placeholder="Compania SRL">
+          <input type="text" id="company" placeholder="Company name">
         </div>
         <div class="form-group">
           <label for="topic">What do you need help with?</label>
